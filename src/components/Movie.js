@@ -1,16 +1,36 @@
-import React, { useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { TMDBContext } from "../contextapi/TMDBContext"; // Import the TMDBContext
 
 const Movie = () => {
-  const tmdbData = useContext(TMDBContext); // Access TMDBContext
-  console.log(tmdbData);
-  // Check if tmdbData is null or undefined before using it
-  if (!tmdbData) {
+  const [movieList, setMovieList] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const apiKey = process.env.REACT_APP_TMDB_KEY;
+  const movieBaseUrl =
+    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const fullUrl = `${movieBaseUrl}&api_key=${apiKey}`;
+        const response = await fetch(fullUrl);
+        if (!response.ok) {
+          throw new Error("Network response was not ok");
+        }
+        const data = await response.json();
+        setMovieList(data.results);
+        setLoading(false);
+      } catch (error) {
+        console.error("Error fetching movie data:", error);
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [apiKey, movieBaseUrl]);
+
+  if (loading) {
     return <p>Loading...</p>;
   }
-
-  const { results: movieList } = tmdbData;
 
   return (
     <div className="movie-container">
