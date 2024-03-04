@@ -7,17 +7,18 @@ const MovieDetails = () => {
   const [movieDetails, setMovieDetails] = useState(null);
   const tmdbData = useContext(TMDBContext); // Use the useContext hook to access the context
 
+  const api_key=process.env.REACT_APP_TMDB_KEY
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
-        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=b299544458b3d5d0e56aca6192d9b7d5`);
+        const response = await fetch(`https://api.themoviedb.org/3/movie/${id}?api_key=${api_key}`);
         const data = await response.json();
         setMovieDetails(data);
       } catch (error) {
         console.error('Error fetching movie details:', error);
       }
     };
-
+    console.log(tmdbData.api_key)
     fetchMovieDetails();
   }, [id, tmdbData.api_key]); // Add tmdbData.api_key to dependency array
 

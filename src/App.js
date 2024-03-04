@@ -5,7 +5,8 @@ import { Navbar } from "./components/navbar";
 import Movie from "./components/Movie";
 import AboutPage from "./pages/AboutPage";
 import MovieDetails from "./pages/Moviedetails";
-import { TMDBProvider } from "./contextapi/TMDBContext";
+import { TMDBProvider } from "../src/contextapi/TMDBContext";
+import { SearchMovies } from "./components/SearchMovies";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<Movie />} />
               <Route exact path="/about" element={<AboutPage />} />
               <Route path="/moviedetails/:id" element={<MovieDetails />} />
+              <Route path="/search/movie" element={<SearchMovies />} />
             </Routes>
           </div>
         </div>
@@ -28,5 +30,3 @@ function App() {
 }
 
 export default App;
-
-//testing

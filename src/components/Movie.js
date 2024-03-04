@@ -4,7 +4,7 @@ import { TMDBContext } from "../contextapi/TMDBContext"; // Import the TMDBConte
 
 const Movie = () => {
   const tmdbData = useContext(TMDBContext); // Access TMDBContext
-
+  console.log(tmdbData);
   // Check if tmdbData is null or undefined before using it
   if (!tmdbData) {
     return <p>Loading...</p>;

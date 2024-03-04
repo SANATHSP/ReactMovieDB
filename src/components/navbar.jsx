@@ -1,20 +1,8 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
-import { AppBar, Toolbar, Typography, IconButton, TextField } from "@mui/material";
-import SearchIcon from "@mui/icons-material/Search";
+import { AppBar, Toolbar, Typography } from "@mui/material";
 
 export const Navbar = () => {
-  const [searchQuery, setSearchQuery] = useState("");
-
-  const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
-  };
-
-  const handleSearchSubmit = (event) => {
-    event.preventDefault();
-    // Here you can perform actions with the search query, such as redirecting to a search results page
-    console.log("Search submitted:", searchQuery);
-  };
 
   return (
     <AppBar position="static">
@@ -36,24 +24,10 @@ export const Navbar = () => {
             </Link>
           </li>
           <li>
-            <form onSubmit={handleSearchSubmit}>
-              <TextField
-                id="search"
-                label="Search Movies"
-                variant="outlined"
-                color="secondary"
-                value={searchQuery}
-                onChange={handleSearchChange}
-                InputProps={{
-                  endAdornment: (
-                    <IconButton type="submit" aria-label="search">
-                      <SearchIcon />
-                    </IconButton>
-                  ),
-                }}
-              />
-            </form>
-          </li>
+              <Link to="/search/movie" className="btn btn-main">
+                Search Movies
+              </Link>
+            </li>
         </ul>
       </Toolbar>
     </AppBar>
