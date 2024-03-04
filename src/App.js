@@ -7,7 +7,7 @@ import AboutPage from "./pages/AboutPage";
 import MovieDetails from "./pages/Moviedetails";
 import { TMDBProvider } from "../src/contextapi/TMDBContext";
 import { SearchMovies } from "./components/SearchMovies";
-
+import NotFoundPage from "./pages/NotFoundPage";
 function App() {
   return (
     <TMDBProvider>
@@ -21,6 +21,8 @@ function App() {
               <Route exact path="/about" element={<AboutPage />} />
               <Route path="/moviedetails/:id" element={<MovieDetails />} />
               <Route path="/search/movie" element={<SearchMovies />} />
+              {/* route to handle 404 page */}
+              <Route path="*" element={<NotFoundPage />} />
             </Routes>
           </div>
         </div>

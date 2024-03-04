@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 const ResultCard = ({movie}) => {
   return (
@@ -25,8 +26,12 @@ const ResultCard = ({movie}) => {
             </h4>
           </div>
           <div className="controls">
+             {/* Us Link to navigate to the movie details page */}
+          
           <button className="btn">
-            View Details
+          <Link to={`/moviedetails/${movie.id}`} className="btn">
+          View Details
+          </Link>
           </button>
         </div>
         </div>

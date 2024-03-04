@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
+import ImageCard from "./ImageCard";
 
 const Movie = () => {
   const [movieList, setMovieList] = useState([]);
   const [loading, setLoading] = useState(true);
   const apiKey = process.env.REACT_APP_TMDB_KEY;
   const movieBaseUrl =
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
+    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&sort_by=popularity.desc";
 
   useEffect(() => {
     const fetchData = async () => {
@@ -35,13 +35,7 @@ const Movie = () => {
   return (
     <div className="movie-container">
       {movieList.map((movie) => (
-        <Link key={movie.id} to={`/moviedetails/${movie.id}`}>
-          <img
-            className="movie-image"
-            src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-            alt={movie.title}
-          />
-        </Link>
+        <ImageCard key={movie.id} movie={movie} />
       ))}
     </div>
   );

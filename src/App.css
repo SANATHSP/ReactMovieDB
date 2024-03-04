@@ -329,3 +329,17 @@ header .nav-links li:last-child {
 .details {
   text-align: center; /* Center-align the details sectiom */
 }
+.view-details-btn{
+  display: flex;
+}
+
+/* 404page */
+
+.error-image{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+height: 100%;
+width: 100%;
+}
