@@ -1,6 +1,6 @@
 # REACT MOVIE APP
 
-This is a demo React project created to showcase a movie database application using React.js. It demonstrates various features such as browsing a list of movies, viewing movie details, and searching for movies by title. The project utilizes React Router for navigation and the Context API for state management.
+This is a demo React project created to showcase a movie database application using React.js. It demonstrates various features such as browsing a list of movies, viewing movie details, and searching for movies by title. The project utilizes the React Router for navigation and the Context API for state management.
 
 ## Features
 
@@ -9,11 +9,11 @@ This is a demo React project created to showcase a movie database application us
 - Users can quickly access important details about each movie.
 - A search feature allows users to find specific movies by entering keywords or titles.
 - Search results are dynamically updated as users type, providing a seamless and efficient search experience.
-- Clicking on "View Details" for a specific movie navigates the user to a dedicated page displaying in-depth information.
+- Clicking on "Learn more" for a specific movie navigates the user to a dedicated page displaying in-depth information.
 
 ## Tech
 
-Dillinger uses a number of open source projects to work properly:
+React Movie app uses several open-source projects to work properly:
 
 - React Router - Enhance navigation within the React app using React Router for dynamic routing.
 - Material-UI - Utilize a UI component library like Material-UI to ensure a consistent and visually appealing design.
@@ -33,7 +33,7 @@ npm install
 npm start
 ```
 
-> Note: `API endpoint` for the forllowing react-app.
+> Note: `API endpoint` for the following react-app.
 
 ```sh
 http://localhost:3000/                    -home page
