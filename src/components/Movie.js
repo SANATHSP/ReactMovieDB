@@ -32,6 +32,8 @@ const Movie = () => {
     return <p>Loading...</p>;
   }
 
+  console.log(movieList);
+
   return (
     <div className="movie-container">
       {movieList.map((movie) => (

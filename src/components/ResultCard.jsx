@@ -26,7 +26,7 @@ const ResultCard = ({movie}) => {
             </h4>
           </div>
           <div className="controls">
-             {/* Us Link to navigate to the movie details page */}
+             {/* Using link to navigate to the movie details page */}
           
           <button className="btn">
           <Link to={`/moviedetails/${movie.id}`} className="btn">

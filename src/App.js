@@ -10,6 +10,7 @@ import { SearchMovies } from "./components/SearchMovies";
 import NotFoundPage from "./pages/NotFoundPage";
 function App() {
   return (
+    // wrapping the provider to the child component
     <TMDBProvider>
       <Router>
         <Navbar />

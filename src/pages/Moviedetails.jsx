@@ -1,13 +1,12 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { TMDBContext } from "../contextapi/TMDBContext"; // Import the TMDBContext
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
-  const tmdbData = useContext(TMDBContext); // Use the useContext hook to access the context
 
   const api_key=process.env.REACT_APP_TMDB_KEY
+
   useEffect(() => {
     const fetchMovieDetails = async () => {
       try {
@@ -18,14 +17,14 @@ const MovieDetails = () => {
         console.error('Error fetching movie details:', error);
       }
     };
-    console.log(tmdbData.api_key)
+   
     fetchMovieDetails();
-  }, [id, tmdbData.api_key]); // Add tmdbData.api_key to dependency array
+  }, [id,api_key]); 
 
   if (!movieDetails) {
     return <div>Loading...</div>;
   }
-
+  //destructuring from the state var 
   const { title, release_date, overview, poster_path } = movieDetails;
   const imageURL = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
