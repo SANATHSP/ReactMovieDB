@@ -316,6 +316,7 @@ header .nav-links li:last-child {
   align-items: center;
   padding: 20px;
   max-width: 90%; 
+  background-color: rgb(121, 145, 164);
 }
 
 .poster img {

@@ -1,9 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
+import { TMDBContext } from "../contextapi/TMDBContext"; // Import the TMDBContext
 
 const MovieDetails = () => {
   const { id } = useParams();
   const [movieDetails, setMovieDetails] = useState(null);
+  const tmdbData = useContext(TMDBContext); // Use the useContext hook to access the context
 
   useEffect(() => {
     const fetchMovieDetails = async () => {
@@ -17,22 +19,19 @@ const MovieDetails = () => {
     };
 
     fetchMovieDetails();
-  }, [id]);
+  }, [id, tmdbData.api_key]); // Add tmdbData.api_key to dependency array
 
   if (!movieDetails) {
     return <div>Loading...</div>;
   }
 
   const { title, release_date, overview, poster_path } = movieDetails;
-
-  // image URL using a template literal
   const imageURL = `https://image.tmdb.org/t/p/w500/${poster_path}`;
 
   return (
     <div className="movie-details">
       <div className="box">
         <div className="poster">
-          {/* Using the imageURL var for the src  */}
           <img src={imageURL} alt={title} />
         </div>
         <div className="details">

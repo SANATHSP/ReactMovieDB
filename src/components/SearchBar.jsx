@@ -1,18 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { TextField } from "@mui/material";
-import { Navigate, useHistory, useNavigate } from "react-router-dom";
+import { TMDBContext } from "./TMDBContext";
+import { useNavigate } from "react-router-dom";
 
 const SearchBar = () => {
   const [searchQuery, setSearchQuery] = useState("");
+  const [searchResults, setSearchResults] = useState([]);
+  const tmdbData = useContext(TMDBContext);
   const navigate = useNavigate();
 
   const handleSearchChange = (event) => {
-    setSearchQuery(event.target.value);
+    const query = event.target.value;
+    setSearchQuery(query);
+    console.log("Search query:", query);
+
+    if (query.trim() !== "") {
+      const filteredMovies = tmdbData.filter((movie) =>
+        movie.title.toLowerCase().includes(query.toLowerCase())
+      );
+      console.log("Filtered movies:", filteredMovies);
+      setSearchResults(filteredMovies);
+    } else {
+      console.log("Empty search query");
+      setSearchResults([]);
+    }
   };
 
   const handleSearchSubmit = (event) => {
     event.preventDefault();
-    Navigate.push(`/search?q=${searchQuery}`);
+    if (searchQuery.trim() !== "") {
+      navigate(`/search?q=${searchQuery}`);
+      console.log("Search submitted:", searchQuery);
+    }
   };
 
   return (
@@ -24,6 +43,9 @@ const SearchBar = () => {
         value={searchQuery}
         onChange={handleSearchChange}
       />
+      {searchResults.map((movie) => (
+        <div key={movie.id}>{movie.title}</div>
+      ))}
     </form>
   );
 };
